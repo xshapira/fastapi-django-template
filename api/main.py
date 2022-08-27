@@ -12,7 +12,6 @@ from config.asgi import get_starlette_application
 
 
 class Error(BaseModel):
-    # loc: Optional[List[str]] = None
     message: str
     type: str
 
