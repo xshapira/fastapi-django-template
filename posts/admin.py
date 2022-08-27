@@ -2,10 +2,9 @@ from django.contrib import admin
 
 from posts import models
 
-
-@admin.register(models.Programmer)
-class ProgrammerAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(models.Post)
+# class PostAdmin(admin.ModelAdmin):
+#     pass
 
 
 # @admin.register(models.Programmer)
