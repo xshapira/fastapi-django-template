@@ -2,8 +2,7 @@ from random import randrange
 
 from fastapi import APIRouter, HTTPException, Response, status
 
-from cities.models import Company, Programmer
-from cities.schemas import Post, ProgrammerSchema
+from posts.schemas import Post
 
 router = APIRouter()
 
@@ -18,11 +17,6 @@ def find_index_post(id):
     for i, p in enumerate(db):
         if p["id"] == id:
             return i
-
-
-@router.get("/hello")
-def root():
-    return {"hello": "welcome"}
 
 
 @router.get("/")
@@ -82,15 +76,15 @@ def update_post(id: int, post: Post):
 #     return user
 
 
-@router.post("/programmers", status_code=status.HTTP_201_CREATED)
-def create_programmer(programmer: ProgrammerSchema):
-    user = Programmer.objects.create(
-        name=programmer.name,
-        password=programmer.password,
-        age=programmer.age,
-        company=Company.objects.get(id=programmer.company),
-    )
-    return user
+# @router.post("/programmers", status_code=status.HTTP_201_CREATED)
+# def create_programmer(programmer: ProgrammerSchema):
+#     user = Programmer.objects.create(
+#         name=programmer.name,
+#         password=programmer.password,
+#         age=programmer.age,
+#         company=Company.objects.get(id=programmer.company),
+#     )
+#     return user
 
 
 # @router.get("/programmers/{id}")

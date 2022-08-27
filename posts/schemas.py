@@ -6,7 +6,7 @@ from asgiref.sync import sync_to_async
 from dantico import ModelSchema
 from pydantic import BaseConfig, BaseModel, validator
 
-from cities.models import City, Programmer
+from posts.models import City, Programmer
 
 BaseConfig.arbitrary_types_allowed = True
 
