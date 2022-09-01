@@ -1,7 +1,8 @@
 from random import randrange
 
-from fastapi import APIRouter, HTTPException, Response, status
+from fastapi import HTTPException, Response, status
 
+from api.main import APIRouter
 from posts.schemas import Post
 
 router = APIRouter()
@@ -19,12 +20,12 @@ def find_index_post(id):
             return i
 
 
-@router.get("/")
+@router.get("")
 def get_posts():
     return {"data": db}
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.post("", status_code=status.HTTP_201_CREATED)
 def create_post(post: Post):
     post_dict = post.dict()
     post_dict["id"] = randrange(0, 10001)
