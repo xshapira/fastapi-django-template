@@ -43,6 +43,33 @@ def validation_exception_handler(request: Request, exc: RequestValidationError):
 
 
 @functools.cache
+def register_fast_api_application(root_path: str, **kwargs) -> FastAPI:
+    """
+    In your api.py, etc. files, you can do this:
+
+        api_router = register_fast_api_application(settings.API_V1_STR)
+        api_router.include_router(posts.router, prefix="/posts", tags=["posts"])
+    """
+    application = get_starlette_application()
+    fast_api_application = FastAPI(
+        root_path=root_path,
+        debug=settings.DEBUG,
+        exception_handlers={RequestValidationError: validation_exception_handler},
+        responses={
+            422: {
+                "description": "Validation Error",
+                "model": ErrorResponse,
+            },
+        },
+        title="My API",
+        description="Some description here",
+        **kwargs,
+    )
+    application.mount(root_path, fast_api_application)
+    return fast_api_application
+
+
+@functools.cache
 class APIRouter(FastAPIRouter):
     def api_route(
         self, path: str, *, include_in_schema: bool = True, **kwargs: Any
@@ -91,30 +118,3 @@ class APIRouter(FastAPIRouter):
             return add_path(func)
 
         return decorator
-
-
-@functools.cache
-def register_fast_api_application(root_path: str, **kwargs) -> FastAPI:
-    """
-    In your api.py, etc. files, you can do this:
-
-        api_router = register_fast_api_application(settings.API_V1_STR)
-        api_router.include_router(posts.router, prefix="/posts", tags=["posts"])
-    """
-    application = get_starlette_application()
-    fast_api_application = FastAPI(
-        root_path=root_path,
-        debug=settings.DEBUG,
-        exception_handlers={RequestValidationError: validation_exception_handler},
-        responses={
-            422: {
-                "description": "Validation Error",
-                "model": ErrorResponse,
-            },
-        },
-        title="My API",
-        description="Some description here",
-        **kwargs,
-    )
-    application.mount(root_path, fast_api_application)
-    return fast_api_application
