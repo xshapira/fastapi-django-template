@@ -10,6 +10,11 @@ router = APIRouter()
 db = []
 
 
+@router.get("")
+def test():
+    return {"hello": "world"}
+
+
 def find_post(id):
     return [p for p in db if p["id"] == id]
 

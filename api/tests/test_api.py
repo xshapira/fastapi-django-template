@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.test import TestCase, override_settings
 from fastapi.testclient import TestClient
 
@@ -16,6 +17,6 @@ class BaseTestCase(TestCase):
 
 class APITestCase(BaseTestCase):
     def test_retrieving_api_v1_add(self):
-        response = self.api_client.get("/api/v1/")
+        response = self.api_client.get(f"{settings.API_V1_STR}/posts")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"hello": "world"})
