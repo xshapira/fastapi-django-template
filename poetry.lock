@@ -228,7 +228,7 @@ python-versions = "*"
 
 [[package]]
 name = "fastapi"
-version = "0.81.0"
+version = "0.82.0"
 description = "FastAPI framework, high performance, easy to learn, fast to code, ready for production"
 category = "main"
 optional = false
@@ -831,7 +831,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "89926f46e67f098ac4afdd3d339250f112089a16fd286cca23a6f75bd2d63687"
+content-hash = "ae9a7e7b0e639967a88c9e13a2d7a8eff2a29aae2f2eaebadcf0885a4e044b5d"
 
 [metadata.files]
 anyio = []
