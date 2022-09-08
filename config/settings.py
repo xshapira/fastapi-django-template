@@ -1,9 +1,45 @@
+import functools
 from pathlib import Path
 
-from decouple import config
+from pydantic import BaseSettings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+
+
+class AppSettings(BaseSettings):
+    DEBUG: bool
+    POSTGRES_DB: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_HOST: str
+    POSTGRES_PORT: int
+
+    class Config:
+        case_sensitive = True
+        env_file = ".env"
+        secrets_dir = BASE_DIR
+        env_file_encoding = "utf-8"
+
+
+@functools.cache
+def get_app_settings():
+    """
+    We're using `cache` decorator to re-use the same AppSettings object,
+    instead of reading it for each request. The AppSettings object will be
+    created only once, the first time it's called. Then it will return
+    the same object that was returned on the first call, again and again.
+    """
+    if AppSettings(DEBUG=True):
+        return AppSettings()
+
+    return AppSettings(_env_file="prod.env", _env_file_encoding="utf-8")
+
+
+config = get_app_settings()
+
+# if not config.DEBUG:
+#     config =get_app_settings(_env_file="prod.env", _env_file_encoding="utf-8")
 
 
 # Quick-start development settings - unsuitable for production
@@ -13,7 +49,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = "i@dpxlb-$zm!bwldm*gg0qx&t&*^4lf2#)2*$)rb1u@5nwmcss"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG", cast=bool)
+DEBUG = config.DEBUG
 
 API_V1_STR = "/api/v1"
 
@@ -78,11 +114,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": config("POSTGRES_DB"),
-        "USER": config("POSTGRES_USER"),
-        "PASSWORD": config("POSTGRES_PASSWORD"),
-        "HOST": config("POSTGRES_HOST"),
-        "PORT": config("POSTGRES_PORT"),
+        "NAME": config.POSTGRES_DB,
+        "USER": config.POSTGRES_USER,
+        "PASSWORD": config.POSTGRES_PASSWORD,
+        "HOST": config.POSTGRES_HOST,
+        "PORT": config.POSTGRES_PORT,
     }
 }
 
