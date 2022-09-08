@@ -75,7 +75,7 @@ class APIRouter(FastAPIRouter):
         self, path: str, *, include_in_schema: bool = True, **kwargs: Any
     ) -> Callable[[DecoratedCallable], DecoratedCallable]:
         """
-        This is to prevent the 307 Temporary Redirect when there's
+        This meant to prevent the 307 Temporary Redirect when there's
         a missing trailing slash. The api_route function is a decorator
         that adds the decorated function to the FastAPI router with
         the given path. If the path ends with a "/", then an additional route
