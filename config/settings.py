@@ -18,7 +18,6 @@ class AppSettings(BaseSettings):
     class Config:
         case_sensitive = True
         env_file = ".env"
-        secrets_dir = BASE_DIR
         env_file_encoding = "utf-8"
 
 
@@ -37,9 +36,6 @@ def get_app_settings():
 
 
 config = get_app_settings()
-
-# if not config.DEBUG:
-#     config =get_app_settings(_env_file="prod.env", _env_file_encoding="utf-8")
 
 
 # Quick-start development settings - unsuitable for production
