@@ -85,6 +85,7 @@ class APIRouter(FastAPIRouter):
         with a router prefix, we need to specify an empty path, not "/":
 
         router = APIRouter(prefix="/api/v1/posts")
+
         @router.post("")
         def create_post(post: Post):
         # ...
