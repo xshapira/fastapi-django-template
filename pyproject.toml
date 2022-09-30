@@ -46,12 +46,6 @@ django_settings_module = "config.settings"
 [tool.django-stubs]
 django_settings_module = "config.settings"
 
-[tool.flake8]
-ignore = "E402"
-exclude = ".git,__pycache__,docs/source/conf.py,old,build,dist,venv,migrations"
-max-complexity = 10
-max-line-length = 88
-
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
