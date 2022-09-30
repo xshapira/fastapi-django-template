@@ -22,7 +22,7 @@ class AppSettings(BaseSettings):
 
 
 @functools.cache
-def get_app_settings():
+def get_app_settings() -> AppSettings:
     """
     We're using `cache` decorator to re-use the same AppSettings object,
     instead of reading it for each request. The AppSettings object will be
@@ -36,7 +36,6 @@ def get_app_settings():
 
 
 config = get_app_settings()
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
