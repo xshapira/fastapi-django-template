@@ -31,14 +31,32 @@ ipython = "^8.4.0"
 
 [tool.mypy]
 follow_imports = "silent"
+ignore_missing_imports = true
+implicit_reexport = false
 strict_optional = true
+show_error_codes = true
+
+# Ensure full coverage
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+check_untyped_defs = true
+strict_equality = true
+
+# Restrict dynamic typing
+disallow_any_generics = true
+disallow_subclassing_any = true
+warn_return_any = true
+
+# Know exactly what you're doing
 warn_redundant_casts = true
 warn_unused_ignores = true
-check_untyped_defs = true
-no_implicit_reexport = true
-disallow_any_generics = true
-disallow_untyped_defs = true
-ignore_missing_imports = true
+warn_unused_configs = true
+warn_unreachable = true
+
+# Explicit is better than implicit
+no_implicit_optional = true
 
 [tool.mypy.plugins.django-stubs]
 django_settings_module = "config.settings"
