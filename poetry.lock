@@ -94,7 +94,7 @@ optional = false
 python-versions = ">=3.6.0"
 
 [package.extras]
-unicode_backport = ["unicodedata2"]
+unicode-backport = ["unicodedata2"]
 
 [[package]]
 name = "click"
@@ -126,8 +126,8 @@ python-versions = ">=3.7"
 [package.dependencies]
 django = ">=3.0"
 pydantic = [
-    {version = "*", extras = ["email"]},
     {version = "*"},
+    {version = "*", extras = ["email"]},
 ]
 
 [package.extras]
@@ -143,7 +143,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "django"
-version = "4.1.1"
+version = "4.1.3"
 description = "A high-level Python web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -329,7 +329,7 @@ notebook = ["ipywidgets", "notebook"]
 parallel = ["ipyparallel"]
 qtconsole = ["qtconsole"]
 test = ["pytest (<7.1)", "pytest-asyncio", "testpath"]
-test_extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.19)", "pandas", "pytest (<7.1)", "pytest-asyncio", "testpath", "trio"]
+test-extra = ["curio", "matplotlib (!=3.2.0)", "nbformat", "numpy (>=1.19)", "pandas", "pytest (<7.1)", "pytest-asyncio", "testpath", "trio"]
 
 [[package]]
 name = "isort"
@@ -341,9 +341,9 @@ python-versions = ">=3.6.1,<4.0"
 
 [package.extras]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
-pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
+pipfile-deprecated-finder = ["pipreqs", "requirementslib"]
 plugins = ["setuptools"]
-requirements_deprecated_finder = ["pip-api", "pipreqs"]
+requirements-deprecated-finder = ["pip-api", "pipreqs"]
 
 [[package]]
 name = "itsdangerous"
@@ -629,7 +629,7 @@ urllib3 = ">=1.21.1,<1.27"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
-use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
+use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "six"
@@ -834,7 +834,7 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f9abbadc5c126922e07e290fe9cf6bbda2d5150a0e9be69c0ef9d27fb3fcbbc2"
+content-hash = "6b7331d86f48473e54dfe59fae761a6db18606ab0aa7ad10bb2b314d89af5c81"
 
 [metadata.files]
 anyio = [
@@ -907,8 +907,8 @@ decorator = [
     {file = "decorator-5.1.1.tar.gz", hash = "sha256:637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330"},
 ]
 django = [
-    {file = "Django-4.1.1-py3-none-any.whl", hash = "sha256:acb21fac9275f9972d81c7caf5761a89ec3ea25fe74545dd26b8a48cb3a0203e"},
-    {file = "Django-4.1.1.tar.gz", hash = "sha256:a153ffd5143bf26a877bfae2f4ec736ebd8924a46600ca089ad96b54a1d4e28e"},
+    {file = "Django-4.1.3-py3-none-any.whl", hash = "sha256:6b1de6886cae14c7c44d188f580f8ba8da05750f544c80ae5ad43375ab293cd5"},
+    {file = "Django-4.1.3.tar.gz", hash = "sha256:678bbfc8604eb246ed54e2063f0765f13b321a50526bdc8cb1f943eda7fa31f1"},
 ]
 django-stubs = [
     {file = "django-stubs-1.12.0.tar.gz", hash = "sha256:ea8b35d0da49f7b2ee99a79125f1943e033431dd114726d6643cc35de619230e"},
@@ -1099,7 +1099,10 @@ orjson = [
     {file = "orjson-3.8.0-cp310-cp310-musllinux_1_1_aarch64.whl", hash = "sha256:b68a42a31f8429728183c21fb440c21de1b62e5378d0d73f280e2d894ef8942e"},
     {file = "orjson-3.8.0-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:ff13410ddbdda5d4197a4a4c09969cb78c722a67550f0a63c02c07aadc624833"},
     {file = "orjson-3.8.0-cp310-none-win_amd64.whl", hash = "sha256:2d81e6e56bbea44be0222fb53f7b255b4e7426290516771592738ca01dbd053b"},
+    {file = "orjson-3.8.0-cp311-cp311-macosx_10_7_x86_64.whl", hash = "sha256:200eae21c33f1f8b02a11f5d88d76950cd6fd986d88f1afe497a8ae2627c49aa"},
+    {file = "orjson-3.8.0-cp311-cp311-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:9529990f3eab54b976d327360aa1ff244a4b12cb5e4c5b3712fcdd96e8fe56d4"},
     {file = "orjson-3.8.0-cp311-cp311-manylinux_2_28_x86_64.whl", hash = "sha256:e2defd9527651ad39ec20ae03c812adf47ef7662bdd6bc07dabb10888d70dc62"},
+    {file = "orjson-3.8.0-cp311-none-win_amd64.whl", hash = "sha256:b21c7af0ff6228ca7105f54f0800636eb49201133e15ddb80ac20c1ce973ef07"},
     {file = "orjson-3.8.0-cp37-cp37m-macosx_10_7_x86_64.whl", hash = "sha256:9e6ac22cec72d5b39035b566e4b86c74b84866f12b5b0b6541506a080fb67d6d"},
     {file = "orjson-3.8.0-cp37-cp37m-macosx_10_9_x86_64.macosx_11_0_arm64.macosx_10_9_universal2.whl", hash = "sha256:e2f4a5542f50e3d336a18cb224fc757245ca66b1fd0b70b5dd4471b8ff5f2b0e"},
     {file = "orjson-3.8.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e1418feeb8b698b9224b1f024555895169d481604d5d884498c1838d7412794c"},
