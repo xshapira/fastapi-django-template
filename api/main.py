@@ -64,7 +64,7 @@ def register_fast_api_application(root_path: str, **kwargs) -> FastAPI:
         title="My API",
         description="Some description here",
         **kwargs,
-        openapi_url="/v1/docs/openapi.json",
+        openapi_url="/docs/openapi.json",
     )
     application.mount(root_path, fast_api_application)
     return fast_api_application
