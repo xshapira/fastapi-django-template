@@ -1,6 +1,6 @@
 from random import randrange
 
-from fastapi import HTTPException, Response, status
+from fastapi import HTTPException, Response, status, Request
 
 from api.main import APIRouter
 from posts.schemas import Post
@@ -11,8 +11,8 @@ db = []
 
 
 @router.get("")
-def test():
-    return {"hello": "world"}
+def test(request: Request):
+    return {"message": "Hello World", "root_path": request.scope.get("root_path")}
 
 
 def find_post(id):
