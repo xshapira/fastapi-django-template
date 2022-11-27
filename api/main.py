@@ -22,7 +22,9 @@ class ErrorResponse(BaseModel):
     detail: List[Error]
 
 
-def validation_exception_handler(request: Request, exc: RequestValidationError):
+def validation_exception_handler(
+    request: Request, exc: RequestValidationError
+) -> JSONResponse:
     """
     Format the pydantic ValidationErrors in a more human-readable way.
     """
