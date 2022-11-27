@@ -1,6 +1,6 @@
 from random import randrange
 
-from fastapi import HTTPException, Response, status, Request
+from fastapi import HTTPException, Request, Response, status
 
 from api.main import APIRouter
 from posts.schemas import Post
