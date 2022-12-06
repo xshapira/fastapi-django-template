@@ -1,5 +1,6 @@
 import functools
-from typing import Any, Callable, List
+from collections.abc import Callable
+from typing import Any
 
 from django.conf import settings
 from fastapi import APIRouter as FastAPIRouter
@@ -19,7 +20,7 @@ class Error(BaseModel):
 
 
 class ErrorResponse(BaseModel):
-    detail: List[Error]
+    detail: list[Error]
 
 
 def validation_exception_handler(
