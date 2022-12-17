@@ -23,8 +23,9 @@ from starlette.middleware.wsgi import WSGIMiddleware
 from starlette.responses import Response
 
 FILES_TO_IMPORT = {
-    # "main.py",
     "api.py",
+    "routes.py",
+    "views.py",
     "urls.py",
 }
 
