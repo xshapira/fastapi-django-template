@@ -46,7 +46,7 @@ SECRET_KEY = "i@dpxlb-$zm!bwldm*gg0qx&t&*^4lf2#)2*$)rb1u@5nwmcss"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.DEBUG
 
-API_V1_STR = "/api/v1"
+API_V1_STR = "/v1"
 
 ALLOWED_HOSTS = ["*"]
 
