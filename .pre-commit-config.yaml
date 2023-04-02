@@ -25,6 +25,15 @@ repos:
       - id: django-upgrade
         args: [--target-version, "4.1"]
 
+  - repo: https://github.com/browniebroke/django-codemod
+    # Any tag/version (>1.2.0):
+    # https://github.com/browniebroke/django-codemod/tags
+    rev: v1.2.0
+    hooks:
+      - id: djcodemod
+        # Update arguments that suits you
+        args: ["run", "--deprecated-in", "3.0"]
+
   - repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
@@ -39,3 +48,4 @@ repos:
     rev: v0.0.259
     hooks:
       - id: ruff
+        args: [--fix, --exit-non-zero-on-fix, --ignore, "F401"]
