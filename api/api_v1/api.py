@@ -1,7 +1,7 @@
 from django.conf import settings
 
 from api.main import register_fast_api_application
-from posts.routes import router as post_router
+from posts.router import router as post_router
 
 api_router = register_fast_api_application(settings.API_V1_STR)
 
