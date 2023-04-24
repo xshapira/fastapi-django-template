@@ -20,7 +20,6 @@ psycopg2 = "^2.9.6"
 psycopg2-binary = "^2.9.6"
 dantico = "^0.0.10"
 python-dotenv = "^0.21.0"
-djlint = "^1.24.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
@@ -28,6 +27,7 @@ ruff = "^0.0.262"
 isort = "^5.10.1"
 django-stubs = "^1.16.0"
 mypy = "^1.2"
+djlint = "^1.24.0"
 ipython = "^8.12.0"
 
 [tool.mypy]
