@@ -78,7 +78,7 @@ $ uvicorn config.asgi:application --reload
 ### FastAPI docs
 
 ```plaintext
-http://localhost:8000/api/v1/docs
+http://localhost:8000/v1/docs
 ```
 
 ### Django admin
