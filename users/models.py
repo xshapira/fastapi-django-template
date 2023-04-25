@@ -8,7 +8,11 @@ class User(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=50)
-    posts = models.ManyToManyField("posts.BlogPost", related_name="authors", blank=True)
+    posts = models.ManyToManyField(
+        "posts.BlogPost",
+        blank=True,
+        related_name="authors",
+    )
 
     class Meta:
         verbose_name = "User"
