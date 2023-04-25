@@ -1,11 +1,10 @@
-# fastapi-django
+# fastapi-django-template
 
-FastAPI with Django ORM.
+Use Django with FastAPI swimmingly.
 
 ## Directory hierarchy
 
 ```bash
-$ tree -L 3 -I '__pycache__|venv|staticfiles' -P '*.py'
 .
 ├── api
 │   ├── __init__.py
