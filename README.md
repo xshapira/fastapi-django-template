@@ -9,39 +9,48 @@ $ tree -L 3 -I '__pycache__|venv|staticfiles' -P '*.py'
 .
 ├── api
 │   ├── __init__.py
-│   └── api_v1
-│       ├── __init__.py
-│       └── api.py
-├── cities
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── migrations
-│   │   ├── 0001_initial.py
-│   │   └── __init__.py
-│   ├── models.py
-│   ├── routers
+│   ├── api_v1
 │   │   ├── __init__.py
-│   │   └── cities.py
-│   └── schemas.py
+│   │   └── api.py
+│   ├── main.py
+│   └── tests
+│       ├── __init__.py
+│       └── test_api.py
 ├── config
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py
-│   ├── static
 │   ├── urls.py
 │   └── wsgi.py
 ├── manage.py
-└── tests
+├── posts
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── router.py
+│   ├── schemas.py
+│   └── views.py
+├── templates
+└── users
     ├── __init__.py
-    └── test_api.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py
+    ├── schemas.py
+    ├── tests.py
+    └── views.py
 
-7 directories, 18 files
+10 directories, 28 files
 ```
 
-- `models.py`: Django ORMs
-- `schemas.py`: Pydantic models
-- `routers`: FastAPI routers
+- `models.py` -  Django ORMs
+- `schemas.py` - Pydantic models
+- `router.py` - is a core of each module with all the endpoints
 
 ## Installation
 
