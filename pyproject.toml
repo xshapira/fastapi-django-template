@@ -27,7 +27,7 @@ ruff = "^0.0.262"
 isort = "^5.10.1"
 django-stubs = "^1.16.0"
 mypy = "^1.2"
-djlint = "^1.24.0"
+djlint = "^1.25.0"
 
 [tool.mypy]
 follow_imports = "silent"
