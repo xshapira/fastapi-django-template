@@ -2,8 +2,8 @@ import asyncio
 
 from asgiref.sync import sync_to_async
 from pydantic import BaseModel, validator
-from src.posts.schemas import BlogPostOutput
 
+from posts.schemas import BlogPostOutput
 from users.models import User
 
 
