@@ -1,5 +1,4 @@
 import asyncio
-from typing import Optional
 
 from asgiref.asyncio import coroutine
 from pydantic import BaseModel, validator
