@@ -1,6 +1,6 @@
 import asyncio
 
-from asgiref.asyncio import coroutine
+from asgiref.sync import sync_to_async
 from pydantic import BaseModel, validator
 from src.posts.schemas import BlogPostOutput
 
@@ -25,23 +25,24 @@ class UserCreate(UserBase):
     @validator("email", check_fields=False, pre=True)
     def validate_email(cls, v):
         """
-        We use the asyncio.run_coroutine_threadsafe function to run
+        Using @sync_to_async decorator helps us to convert synchronous code
+        into asynchronous code. @sync_to_async decorator works by wrapping
+        the synchronous code in a coroutine. The coroutine will then be run
+        in an asynchronous environment. This will allow the synchronous code
+        to run concurrently with other tasks.
+
+        We also use the asyncio.run_coroutine_threadsafe function to run
         the email_must_be_unique function in a separate thread. This
         will prevent the main thread from being blocked.
-
-        Using @coroutine is equivalent to the code that uses the
-        @sync_to_async decorator. But, using @coroutine decorator
-        is more efficient, because it does not need to start
-        a separate thread to execute the function.
 
         :param cls: Access the class of the object that is being validated
         :param v: Validate the value
         :return: The result of the email_must_be_unique function
         """
 
-        @coroutine
-        def email_must_be_unique():
-            if User.objects.filter(email=v).exists():
+        @sync_to_async
+        async def email_must_be_unique():
+            if await User.objects.filter(email=v).exists():
                 raise ValueError("email address already exists")
             return v
 
