@@ -25,7 +25,7 @@ python-dotenv = "^0.21.0"
 black = "^23.3.0"
 ruff = "^0.0.263"
 isort = "^5.10.1"
-django-stubs = "^1.16.0"
+django-stubs = "^4.2.0"
 mypy = "^1.2"
 djlint = "^1.25.0"
 
