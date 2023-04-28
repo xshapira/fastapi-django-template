@@ -1,8 +1,22 @@
+from django.db import models
 from django.forms.models import model_to_dict
-from pydantic import BaseModel, EmailStr, SecretStr, validator
+from pydantic import BaseModel as _BaseModel
+from pydantic import EmailStr, SecretStr, validator
 
 from posts.schemas import BlogPostOutput
 from users.models import User
+
+
+class BaseModel(_BaseModel):
+    @classmethod
+    def from_orms(cls, instances: list[models.Model]):
+        """
+        Take a list of Django models and returns a list of Pydantic models.
+        This method iterates through the list of instances and calls
+        the from_orm method for each instance, converting them to
+        related Pydantic models.
+        """
+        return [cls.from_orm(inst) for inst in instances]
 
 
 class UserBase(BaseModel):
