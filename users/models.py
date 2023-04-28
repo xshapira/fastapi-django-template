@@ -11,8 +11,9 @@ class User(models.Model):
     posts = models.ForeignKey(
         "posts.BlogPost",
         blank=True,
+        null=True,
         on_delete=models.CASCADE,
-        related_name="blog_authors",
+        related_name="blog_users",
     )
 
     class Meta:
