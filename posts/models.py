@@ -7,9 +7,7 @@ class BlogPost(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255, unique=True)
-    authors = models.ManyToManyField(
-        "users.User", on_delete=models.CASCADE, related_name="posts"
-    )
+    authors = models.ManyToManyField("users.User", related_name="blog_posts")
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

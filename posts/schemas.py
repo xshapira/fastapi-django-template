@@ -18,7 +18,11 @@ class BlogPostOutput(BlogPostBase):
     updated_at: datetime
 
     class Config:
-        model = BlogPost
+        orm_mode = True
+
+    @classmethod
+    def from_orm(cls, blog: BlogPost):
+        return cls(**blog.dict())
 
 
 class BlogPostUpdate(BlogPostBase):
