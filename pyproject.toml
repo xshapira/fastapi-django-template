@@ -23,7 +23,7 @@ python-dotenv = "^0.21.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
-ruff = "^0.0.280"
+ruff = "^0.0.281"
 isort = "^5.10.1"
 django-stubs = "^4.2.3"
 mypy = "^1.4"
