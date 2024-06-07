@@ -29,7 +29,7 @@ def get_app_settings() -> AppSettings:
     created only once, the first time it's called. Then it will return
     the same object that was returned on the first call, again and again.
     """
-    if AppSettings(DEBUG=True):
+    if AppSettings().DEBUG:
         return AppSettings()
 
     return AppSettings(_env_file="prod.env", _env_file_encoding="utf-8")
