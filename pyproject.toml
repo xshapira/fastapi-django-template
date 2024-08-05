@@ -22,7 +22,7 @@ dantico = "^0.0.10"
 python-dotenv = "^1.0.1"
 
 [tool.poetry.group.dev.dependencies]
-black = "^24.4.2"
+black = "^24.8.0"
 ruff = "^0.5.5"
 isort = "^5.13.2"
 django-stubs = "^5.0.4"
