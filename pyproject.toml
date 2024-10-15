@@ -13,7 +13,7 @@ django = "^5.1"
 fastapi = {extras = ["all"], version = "^0.99.1"}
 pydantic = "^1.10.18"
 uvicorn = "^0.31.1"
-uvloop = {version = "^0.20.0", markers = 'sys_platform != "win32"'}
+uvloop = {version = "^0.21.0", markers = 'sys_platform != "win32"'}
 whitenoise = "^6.7.0"
 requests = "^2.32.3"
 psycopg2 = "^2.9.9"
