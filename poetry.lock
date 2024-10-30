@@ -1743,13 +1743,13 @@ files = [
 
 [[package]]
 name = "whitenoise"
-version = "6.8.1"
+version = "6.8.2"
 description = "Radically simplified static file serving for WSGI applications"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "whitenoise-6.8.1-py3-none-any.whl", hash = "sha256:196ba04ca0a80f4a3f99f88381864f218a28b5fb5b44d29feea484d501fa0ba3"},
-    {file = "whitenoise-6.8.1.tar.gz", hash = "sha256:11042f39f1dcfbb3814726b9364703af6901706582d988e96494cfefdc3a89e2"},
+    {file = "whitenoise-6.8.2-py3-none-any.whl", hash = "sha256:df12dce147a043d1956d81d288c6f0044147c6d2ab9726e5772ac50fb45d2280"},
+    {file = "whitenoise-6.8.2.tar.gz", hash = "sha256:486bd7267a375fa9650b136daaec156ac572971acc8bf99add90817a530dd1d4"},
 ]
 
 [package.extras]
@@ -1758,4 +1758,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "296c114fe860c35e456acf581480f5017411b7f96c68d61a53a410a20ced7b56"
+content-hash = "cb8c2a1f533aff9a92b8c3e328ae6b250330f716958b5e47115211fa21338b0e"
