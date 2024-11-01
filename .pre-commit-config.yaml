@@ -28,7 +28,7 @@ repos:
   - repo: https://github.com/browniebroke/django-codemod
     # Any tag/version (>1.2.0):
     # https://github.com/browniebroke/django-codemod/tags
-    rev: v2.1.11
+    rev: v2.2.1
     hooks:
       - id: djcodemod
         # Update arguments that suits you
