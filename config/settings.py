@@ -14,6 +14,7 @@ DOTENV_PROD = Path(BASE_DIR, "prod.env")
 
 class AppSettings(BaseSettings):
     DEBUG: bool = Field(default=...)
+    SECRET_KEY: str = Field(default=...)
     POSTGRES_DB: str = Field(default=...)
     POSTGRES_USER: str = Field(default=...)
     POSTGRES_PASSWORD: str = Field(default=...)
@@ -21,6 +22,9 @@ class AppSettings(BaseSettings):
     POSTGRES_PORT: int = Field(default=...)
     ALLOWED_HOSTS: list[str] = Field(default=list)
     CSRF_TRUSTED_ORIGINS: list[str] = Field(default=list)
+    DJANGO_SUPERUSER_USERNAME: str = Field(default=...)
+    DJANGO_SUPERUSER_PASSWORD: str = Field(default=...)
+    DJANGO_SUPERUSER_EMAIL: str = Field(default=...)
 
     model_config = SettingsConfigDict(case_sensitive=True, env_file=DOTENV_DEV)
 
@@ -46,7 +50,7 @@ config = get_app_settings()
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "i@dpxlb-$zm!bwldm*gg0qx&t&*^4lf2#)2*$)rb1u@5nwmcss"
+SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config.DEBUG
