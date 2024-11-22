@@ -30,7 +30,7 @@ def validation_exception_handler(
     Format the pydantic ValidationErrors in a more human-readable way.
     """
     errors = {
-        "detail": [
+        "detail": [  # noqa: B035
             {
                 "message": err["msg"],
                 "type": err["type"],
