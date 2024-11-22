@@ -1,24 +1,28 @@
 import functools
 from pathlib import Path
 
-from pydantic import BaseSettings
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
+DOTENV_DEV = Path(BASE_DIR, ".env")
+
+DOTENV_PROD = Path(BASE_DIR, "prod.env")
+
 
 class AppSettings(BaseSettings):
-    DEBUG: bool
-    POSTGRES_DB: str
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_HOST: str
-    POSTGRES_PORT: int
+    DEBUG: bool = Field(default=...)
+    POSTGRES_DB: str = Field(default=...)
+    POSTGRES_USER: str = Field(default=...)
+    POSTGRES_PASSWORD: str = Field(default=...)
+    POSTGRES_HOST: str = Field(default=...)
+    POSTGRES_PORT: int = Field(default=...)
+    ALLOWED_HOSTS: list[str] = Field(default=list)
+    CSRF_TRUSTED_ORIGINS: list[str] = Field(default=list)
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(case_sensitive=True, env_file=DOTENV_DEV)
 
 
 @functools.cache
@@ -33,7 +37,7 @@ def get_app_settings() -> AppSettings:
     if app_settings.DEBUG:
         return app_settings
 
-    return AppSettings(_env_file="prod.env", _env_file_encoding="utf-8")
+    return AppSettings(_env_file=DOTENV_PROD, _env_file_encoding="utf-8")
 
 
 config = get_app_settings()
@@ -49,10 +53,7 @@ DEBUG = config.DEBUG
 
 API_V1_STR = "/v1"
 
-ALLOWED_HOSTS = ["*"]
-
-
-# Application definition
+ALLOWED_HOSTS = config.ALLOWED_HOSTS
 
 DJANGO_APPS = [
     "django.contrib.admin",
@@ -148,10 +149,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = BASE_DIR.joinpath("static")
+STATIC_ROOT = Path(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [BASE_DIR.joinpath("config/static")]
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_DIRS = [str(BASE_DIR / "config" / "static")]
+
+# Turn on WhiteNoise storage backend that takes care of compressing static files
+# and creating unique names for each version so they can safely be cached forever.
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
@@ -164,3 +172,17 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Django Admin URL
+ADMIN_URL = "admin/"
+
+# SECURITY
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-httponly
+SESSION_COOKIE_HTTPONLY = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#secure-browser-xss-filter
+SECURE_BROWSER_XSS_FILTER = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
+X_FRAME_OPTIONS = "DENY"
+
+CSRF_TRUSTED_ORIGINS = config.CSRF_TRUSTED_ORIGINS
