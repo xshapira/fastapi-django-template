@@ -23,7 +23,7 @@ dependencies = [
   "django-widget-tweaks>=1.5.0",
   "dj-svg>=0.3.1",
   "whitenoise>=6.8.2",
-  "httpx>=0.27.2",
+  "httpx>=0.28.1",
 ]
 
 [tool.uv]
